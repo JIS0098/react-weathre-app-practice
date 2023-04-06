@@ -1,3 +1,11 @@
+body {
+    background: url(https://mblogthumb-phinf.pstatic.net/20131105_82/cr54207_1383621494958iRyxH_PNG/%B9%E8%B0%E6.png?type=w2);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
 .container{
     height: 100vh;
     display: flex;
@@ -7,27 +15,30 @@
 }
 
 .weather-box{
-    width: 400px;
-    height: 250px;
-    border: 2px solid lightblue;
+    width: 500px;
+    height: 300px;
+    border: 2px solid rgb(226, 226, 226);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .but-box {
-    width: 400px;
-    background-color:lightblue;
+    width: 500px;
+    background-color: rgb(226, 226, 226);
     border-radius: 10px;
     margin-top: 15px;
-    padding: 8px 0;
+    padding: 15px 0;
     display: flex;
     justify-content: center;
 }
 
 .but-box button {
+    width: 130px;
+    height: 40px;
     margin: 0 5px;
     
 }
