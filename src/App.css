@@ -1,0 +1,33 @@
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-box{
+    width: 400px;
+    height: 250px;
+    border: 2px solid lightblue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.but-box {
+    width: 400px;
+    background-color:lightblue;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.but-box button {
+    margin: 0 5px;
+    
+}
