@@ -19,7 +19,7 @@ const API_KEY = "96d5d9b8cdb03a1796aa86d82fddbf52";
 function App() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState("");
   const cities = ["paris", "new york", "tokyo", "seoul"];
 
   const getCurrentLocation = () => {
@@ -32,16 +32,20 @@ function App() {
 
   const getWeatherByCurrentLocation = async (lat, lon) => {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+    setLoading(true);
     let response = await fetch(url);
     let data = await response.json();
     setWeather(data);
+    setLoading(false);
   };
 
   const getWeatherByCity = async () => {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    setLoading(true);
     let response = await fetch(url);
     let data = await response.json();
     setWeather(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -54,12 +58,18 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container">
-        <ClipLoader color="f07488" loading={loading} size={80} />
-        <WeatherBox weather={weather} />
-        <WeatherBut cities={cities} setCity={setCity} />
-      </div>
+      {loading ? (
+        <div className="container">
+          <ClipLoader color="f07488" loading={loading} size={80} />
+        </div>
+      ) : (
+        <div className="container">
+          <WeatherBox weather={weather} />
+          <WeatherBut cities={cities} setCity={setCity} />
+        </div>
+      )}
     </div>
   );
 }
 export default App;
+
