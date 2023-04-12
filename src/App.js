@@ -18,8 +18,8 @@ const API_KEY = "96d5d9b8cdb03a1796aa86d82fddbf52";
 
 function App() {
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState("");
-  const [loading, setLoading] = useState("");
+  const [city, setCity] = useState(null);
+  const [loading, setLoading] = useState(false);
   const cities = ["paris", "new york", "tokyo", "seoul"];
 
   const getCurrentLocation = () => {
@@ -48,8 +48,16 @@ function App() {
     setLoading(false);
   };
 
+  const handleCityChange = (city) => {
+    if (city == "current") {
+      setCity(null);  //city는 null 이므로  getCurrentLocation를 실행한다
+    } else {
+      setCity(city); //city는 null이 아니므로  getWeatherByCity를 실행한다
+    }
+  }
+
   useEffect(() => {
-    if (city == "") {
+    if (city == null) {
       getCurrentLocation();
     } else {
       getWeatherByCity();
@@ -65,7 +73,7 @@ function App() {
       ) : (
         <div className="container">
           <WeatherBox weather={weather} />
-          <WeatherBut cities={cities} setCity={setCity} />
+          <WeatherBut cities={cities} selectCity={city} handleCityChange={handleCityChange} />
         </div>
       )}
     </div>
